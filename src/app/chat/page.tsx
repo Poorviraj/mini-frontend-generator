@@ -1,12 +1,22 @@
+'use client'
+
+import { useState } from 'react'
 import ChatSidebar from '@/components/ChatSidebar'
+import ChatPanel from '@/components/ChatPanel'
+import { Message } from '@/lib/types'
 
 export default function ChatPage() {
+  const [messages, setMessages] = useState<Message[]>([])
+  const [selectedMessage, setSelectedMessage] = useState<Message | null>(null)
+
   return (
-    <div className="flex">
-      <ChatSidebar />
-      <div className="flex-1 bg-white p-8">
-        <p className="text-gray-400">Component Preview will render here later.</p>
-      </div>
+    <div className="flex h-screen">
+      <ChatSidebar
+        messages={messages}
+        setMessages={setMessages}
+        setSelectedMessage={setSelectedMessage}
+      />
+      <ChatPanel message={selectedMessage} />
     </div>
   )
 }

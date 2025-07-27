@@ -4,4 +4,5 @@ export type Message = {
   role: 'user' | 'assistant'
   content: string
   image?: string // base64 or URL
+  isLoading?: boolean
 }
